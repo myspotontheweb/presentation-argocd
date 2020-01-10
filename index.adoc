@@ -47,7 +47,7 @@ image::https://media1.giphy.com/media/pZ8UxNIwMGDtK/source.gif[background, size=
 
 image::https://argoproj.github.io/argo-cd/assets/argocd-ui.gif[]
 
-=== One we prepared eariler
+=== One we prepared earlier
 
 * https://github.com/Teamwork/ops-demo1
 * https://github.com/Teamwork/ops-k8s-workloads
