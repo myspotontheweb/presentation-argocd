@@ -40,14 +40,14 @@ image::https://media1.giphy.com/media/pZ8UxNIwMGDtK/source.gif[background, size=
 
 image::https://argoproj.github.io/argo-cd/assets/argocd-ui.gif[]
 
-=== 1. One we prepared earlier
+=== 1. Build and deploy
 
 * https://github.com/Teamwork/ops-demo1
 * https://github.com/Teamwork/ops-k8s-workloads
 
-=== 2. Deploy some more
+=== 2. Add two applications + Rollback
 
-* https://github.com/Teamwork/ops-k8s-workloads/pull/6
+* https://github.com/Teamwork/ops-k8s-workloads/pull/11
 
 == Credits
 
