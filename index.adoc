@@ -7,13 +7,6 @@
 
 image::https://media1.giphy.com/media/pZ8UxNIwMGDtK/source.gif[background, size=cover]
 
-== Who has heard of
-
-* Kubernetes?
-* CRDs?
-* Git?
-* GitOps?
-
 == What is GitOps?
 
 * Describe your desired software system as files stored in git
@@ -43,18 +36,18 @@ image::https://media1.giphy.com/media/pZ8UxNIwMGDtK/source.gif[background, size=
 * Observable - detect configuration drift
 * Velocity
 
-== Demo time
+== Demos 
 
 image::https://argoproj.github.io/argo-cd/assets/argocd-ui.gif[]
 
-=== One we prepared earlier
+=== 1. One we prepared earlier
 
 * https://github.com/Teamwork/ops-demo1
 * https://github.com/Teamwork/ops-k8s-workloads
 
-=== Deploy some more
+=== 2. Deploy some more
 
-* https://github.com/Teamwork/ops-k8s-workloads
+* https://github.com/Teamwork/ops-k8s-workloads/pull/6
 
 == Credits
 
