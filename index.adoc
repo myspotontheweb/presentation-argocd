@@ -3,7 +3,7 @@
 
 :imagesdir: images
 
-== !
+== See the movie?
 
 image::https://media1.giphy.com/media/pZ8UxNIwMGDtK/source.gif[background, size=cover]
 
@@ -12,7 +12,16 @@ image::https://media1.giphy.com/media/pZ8UxNIwMGDtK/source.gif[background, size=
 * Describe your desired software system as files stored in git
 * An agent ensures the live system is the same as the state in Git
 
-=== What do you need?
+=== History of GitOps
+
+* First published by Weaveworks 
+* https://www.weave.works/blog/kubernetes-anti-patterns-let-s-do-gitops-not-ciops[Kubernetes anti-patterns: Let's do GitOps not CiOps]
+
+==== Typical CI pipeline
+
+image::typical_CI_pipeline.png[]
+
+=== What do you need for GitOps?
 
 [%step]
 . Git repository
@@ -26,7 +35,7 @@ image::https://media1.giphy.com/media/pZ8UxNIwMGDtK/source.gif[background, size=
 * CI system
 * Web UI
 
-== Why GitOps?
+=== Benefits of GitOps
 
 * Single source of truth
 * Security, compliance and auditing
@@ -35,19 +44,89 @@ image::https://media1.giphy.com/media/pZ8UxNIwMGDtK/source.gif[background, size=
 * Declaritive
 * Observable - detect configuration drift
 * Velocity
+ 
+== How does GitOps actually work?
 
-== Demos 
+=== CI/CD
+
+image::CICD.png[]
+
+=== Git commits are signals 
+
+[%step]
+* Build triggered by commit to **Code** repo
+* Deployment triggered by commit to **Config** repo
+* Separate repos? (In the beginning maybe)
+
+=== Code + chart in same repo?
+
+image::OneRepoListing.png[]
+
+* This is how we started
+
+=== Commit history
+
+image::OneRepoCommits.png[]
+
+=== Commit changes
+
+image::OneRepoCommitChanges.png[]
+
+=== [skip ci]
+
+image::OneRepoCommits.png[]
+
+=== Review pipeline again
+
+image::CICD.png[]
+
+=== Application fragment
+
+[source]
+----
+$ kubectl get application ops-demo1 -oyaml | yq r - spec.source
+helm:
+  values: |
+    ingress:
+      hostname: ops-demo1.us.teamworkops.com
+    opsdemo1:
+      replicaCount: 3
+    config:
+      HELLO: "world"
+      HOLA: "mundo"
+path: chart
+repoURL: git@github.com:Teamwork/ops-demo1.git
+----
+
+=== Best practices
+
+[%step]
+. Two repos: One for code the other for deployment
+. Chose the right number of deployment repos
+. Test your manifests before you commit
+. Git manifests should not change to to external influences
+. Plan how you'll manage secrets
+
+== Thought this talk was about Argo CD? 
 
 image::https://argoproj.github.io/argo-cd/assets/argocd-ui.gif[]
 
-=== 1. Build and deploy
+=== Tour of the UI
 
-* https://github.com/Teamwork/ops-demo1
-* https://github.com/Teamwork/ops-k8s-workloads
+https://argocd.us.teamworkops.com
 
-=== 2. Add two applications + Rollback
+[%step]
+. SSO enabled
+. Multi-tenanted 
+. Visual map of application components
+. Status
+. Inspect Yaml and logs
+. Delete objects
+. Change app settings
 
-* https://github.com/Teamwork/ops-k8s-workloads/pull/11
+=== Demo: Build and deploy
+
+* Commit a change and watch it get built and deployed
 
 == Credits
 
